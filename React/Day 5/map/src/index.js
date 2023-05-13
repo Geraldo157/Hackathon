@@ -1,17 +1,52 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from 'react'
+import ReactDOM from 'react-dom'
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
+const Numbers = ({numbers}) =>{
+  const list = numbers.map((number) => <li>{number}</li>)
+  return list;
+}
+
+const App = () => {
+  let numbers = [1,2,3,4,5,6]
+  return (
+    <div className='container'>
+      <div>
+        <ul>
+          <Numbers numbers={numbers}/>
+        </ul>
+      </div>
+    </div>
+  )
+}
+
+const skills = [
+  ['HTML', 10],
+  ['CSS', 8],
+  ['JS', 9],
+  ['React', 10],
+]
+
+const Skill = ({skill: [tech, level]}) =>{
+  return(
+    <li>{tech} - {level}</li>
+  )
+}
+
+const Skills = ({skills}) =>{
+  const skillist = skills.map((skill) => <Skill skill={skill}/>)
+  console.log(skillist)
+  return skillist
+}
+
+const composition = (
+  <div>
+    <h1>Numbers List</h1>
     <App />
-  </React.StrictMode>
-);
+    <h1>Skills Levels</h1>
+    <Skills skills={skills} />
+  </div>
+)
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const rootElement = document.getElementById('root')
+ReactDOM.render(composition, rootElement)

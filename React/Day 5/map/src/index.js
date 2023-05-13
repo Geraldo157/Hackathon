@@ -39,12 +39,36 @@ const Skills = ({skills}) =>{
   return skillist
 }
 
+const countries = [
+  { name: 'Finland', city: 'Helsinki' },
+  { name: 'Sweden', city: 'Stockholm' },
+  { name: 'Denmark', city: 'Copenhagen' },
+  { name: 'Norway', city: 'Oslo' },
+  { name: 'Iceland', city: 'Reykjavík' },
+]
+
+const Country = ({country : {name, city}}) =>{
+  return(
+    <div>
+      <h3>{name}</h3>
+      <small>{city}</small>
+    </div>  
+  )
+}
+
+const Countries = ({countries}) =>{
+  const countryList = countries.map((country) => <Country country={country} />)
+  return countryList
+}
+
 const composition = (
   <div>
     <h1>Numbers List</h1>
     <App />
     <h1>Skills Levels</h1>
     <Skills skills={skills} />
+    <h1>Countries and Cities</h1>
+    <Countries countries={countries} />
   </div>
 )
 

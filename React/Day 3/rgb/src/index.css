@@ -1,0 +1,29 @@
+body {
+    height: 100%;
+    line-height: 1.5;
+    font-family: 'Montserrat';
+    font-weight: 300;
+    color: black;
+}
+
+.cor{
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.cores{
+    margin-top: 10px;
+    border: 5px solid black;
+}
+
+.header-wrapper{
+    background-color: #61dbfb;
+    padding: 10px;
+}
+
+.header-wrapper
+.cores{
+    padding: 10px;
+    margin: 2px auto;
+}

@@ -2,30 +2,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import asabenehImage from './images/geraldo.jpeg'
-
-// Fuction to show month date year
-
-const showDate = (time) => {
-  const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ]
-
-  const month = months[time.getMonth()].slice(0, 3)
-  const year = time.getFullYear()
-  const date = time.getDate()
-  return ` ${month} ${date}, ${year}`
-}
+import "./index.css"
 
 // User Card Component
 const UserCard = ({ user: { firstName, lastName, image } }) => (
@@ -45,17 +22,6 @@ const Button = ({ text, onClick, style }) => (
   </button>
 )
 
-// CSS styles in JavaScript Object
-const buttonStyles = {
-  backgroundColor: '#61dbfb',
-  padding: 10,
-  border: 'none',
-  borderRadius: 5,
-  margin: 3,
-  cursor: 'pointer',
-  fontSize: 18,
-  color: 'white',
-}
 
 // class based component
 class Header extends React.Component {
@@ -93,8 +59,8 @@ const Count = ({ count, addOne, minusOne }) => (
   <div>
     <h1>{count} </h1>
     <div>
-      <Button text='+1' onClick={addOne} style={buttonStyles} />
-      <Button text='-1' onClick={minusOne} style={buttonStyles} />
+      <Button text='+1' onClick={addOne}/>
+      <Button text='-1' onClick={minusOne}/>
     </div>
   </div>
 )
@@ -140,13 +106,11 @@ class Main extends React.Component {
           <Button
             text='Greet People'
             onClick={greetPeople}
-            style={buttonStyles}
           />
-          <Button text='Show Time' onClick={handleTime} style={buttonStyles} />
+          <Button text='Show Time' onClick={handleTime}/>
           <Button
             text='Change Background'
             onClick={changeBackground}
-            style={buttonStyles}
           />
           <Count count={count} addOne={addOne} minusOne={minusOne} />
         </div>
@@ -215,7 +179,20 @@ class App extends React.Component {
   greetPeople = () => {
     alert('Welcome to 30 Days Of React Challenge, 2020')
   }
-  changeBackground = () => {}
+  changeBackground = () => {
+    const corAtual = document.body.style.backgroundColor;
+    let newColor;
+
+    if(corAtual == 'red'){
+      newColor = 'gold'
+    } else if( corAtual == 'gold'){
+      newColor = 'green'
+    }else{
+      newColor = 'red'
+    }
+
+    document.body.style.backgroundColor = newColor;
+  }
   render() {
     const data = {
       welcome: 'Welcome to 30 Days Of React',
@@ -228,7 +205,6 @@ class App extends React.Component {
       date: 'Oct 7, 2020',
     }
     const techs = ['HTML', 'CSS', 'JavaScript']
-    const date = new Date()
     // copying the author from data object to user variable using spread operator
     const user = { ...data.author, image: asabenehImage }
 

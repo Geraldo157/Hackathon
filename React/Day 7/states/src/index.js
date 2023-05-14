@@ -110,7 +110,7 @@ class Main extends React.Component {
           <Button text='Show Time' onClick={handleTime}/>
           <Button
             text='Change Background'
-            onClick={changeBackground}
+            onClick={ChangeBackground.changeBackground}
           />
           <Count count={count} addOne={addOne} minusOne={minusOne} />
         </div>
@@ -122,9 +122,6 @@ class Main extends React.Component {
 // Footer Component
 // Class component
 class Footer extends React.Component {
-  constructor(props) {
-    super(props)
-  }
   render() {
     return (
       <footer>
@@ -133,6 +130,27 @@ class Footer extends React.Component {
         </div>
       </footer>
     )
+  }
+}
+
+class ChangeBackground extends React.Component {
+  changeBackground() {
+    const corAtual = document.body.style.backgroundColor;
+    let newColor;
+
+    if (corAtual === 'red') {
+      newColor = 'gold';
+    } else if (corAtual === 'gold') {
+      newColor = 'green';
+    } else {
+      newColor = 'red';
+    }
+
+    document.body.style.backgroundColor = newColor;
+  }
+
+  render() {
+    return null;
   }
 }
 
@@ -179,20 +197,6 @@ class App extends React.Component {
   greetPeople = () => {
     alert('Welcome to 30 Days Of React Challenge, 2020')
   }
-  changeBackground = () => {
-    const corAtual = document.body.style.backgroundColor;
-    let newColor;
-
-    if(corAtual == 'red'){
-      newColor = 'gold'
-    } else if( corAtual == 'gold'){
-      newColor = 'green'
-    }else{
-      newColor = 'red'
-    }
-
-    document.body.style.backgroundColor = newColor;
-  }
   render() {
     const data = {
       welcome: 'Welcome to 30 Days Of React',
@@ -217,7 +221,7 @@ class App extends React.Component {
           techs={techs}
           handleTime={this.handleTime}
           greetPeople={this.greetPeople}
-          changeBackground={this.changeBackground}
+          changeBackground={ChangeBackground.changeBackground}
           addOne={this.addOne}
           minusOne={this.minusOne}
           count={this.state.count}
